@@ -1,0 +1,105 @@
+@import "../../../../styles/_colors.scss";
+
+.login-outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: $back-groud-color-strong;
+
+  .login-inner-container {
+    display: flex;
+    background-color: $back-groud-color-light;
+    width: 86%;
+    height: 80%;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+
+    .quote-container {
+      flex: 0.64;
+      font-family: Inter;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 5%;
+
+      .quote {
+        color: $text-color-3;
+        font-size: 52px;
+        font-weight: 700;
+        text-align: left;
+      }
+      .author {
+        color: $text-color-4;
+        font-size: 32px;
+        font-weight: 700;
+        text-align: right;
+      }
+    }
+    .divider {
+      align-self: center;
+      width: 1.5px;
+      background-color: $text-color-4;
+      height: 80%;
+    }
+    .login-form {
+      flex: 0.36;
+      height: 80%;
+      padding-left: 3vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .login-header {
+        color: $text-color-0;
+        font-family: Inter;
+        font-size: 48px;
+        font-weight: 700;
+      }
+
+      input {
+        border-radius: 5px;
+        color: $text-color-4;
+        font-family: Inter;
+        font-size: 32px;
+        padding: 5px 0;
+        font-weight: 700;
+        width: 23vw;
+        height: 10vh;
+        background-color: $text-color-1;
+      }
+
+      input::placeholder {
+        color: $text-color-3;
+      }
+
+      .user-name {
+        margin-top: 10vh;
+        padding-left: 20px;
+      }
+      .password {
+        margin-top: 5vh;
+        padding-left: 20px;
+      }
+      .login-button {
+        color: $back-groud-color-strong;
+        font-family: Inter;
+        font-size: 32px;
+        font-weight: 700;
+        background-color: $text-color-3;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: 8vh;
+        cursor: pointer;
+        width: 25vw;
+        height: 10vh;
+      }
+      .login-button:hover {
+        color: $text-color-1;
+        background-color: #5d6e92;
+      }
+    }
+  }
+}
