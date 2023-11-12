@@ -2,9 +2,7 @@ name: "Build and Test"
 
 on:
   push:
-    branches: [develop]
-  pull_request:
-    branches: [develop]
+    branches: [testing]
 
 jobs:
   Build-and-Test:
