@@ -26,7 +26,7 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require("path").join(__dirname, "./coverage/educate-fe"),
+      dir: require("path").join(__dirname, "./coverage/chat-web"),
       subdir: ".",
       reporters: [{ type: "html" }, { type: "text-summary" }],
     },
@@ -35,7 +35,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: [isWatch ? "Chrome" : "ChromeHeadless"],
+    browsers: ["ChromeHeadless"],
     singleRun: !isWatch,
     restartOnFileChange: true,
     customLaunchers: {
