@@ -8,11 +8,28 @@
       <p class="author">― B.B. King</p>
     </div>
     <div class="divider"></div>
-    <form class="login-form">
+    <form #form="ngForm" [formGroup]="loginForm" class="login-form">
       <div class="login-header">Chat-Web</div>
-      <input type="text" placeholder="User Name" class="user-name" required />
-      <input type="password" placeholder="Password" class="password" required />
-      <button class="login-button">
+      <input
+        type="text"
+        placeholder="User Name"
+        formControlName="userName"
+        class="user-name"
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        class="password"
+        required
+      />
+      <button
+        type="submit"
+        [disabled]="!loginForm.valid"
+        (click)="login()"
+        class="login-button"
+      >
         <span>LogIn</span>
       </button>
     </form>
