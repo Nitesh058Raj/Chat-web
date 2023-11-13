@@ -1,0 +1,88 @@
+@import "../../../../styles/_colors.scss";
+
+.chat-window-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  font-family: Inter;
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    .messages-list {
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      .message-item {
+        margin-bottom: 20px;
+        margin: 0 3.3vw;
+        display: flex;
+        .user-icon {
+          margin-left: 10px;
+          width: 3.2vw;
+          height: 3.2vw;
+          cursor: pointer;
+        }
+        .message-item-inner {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          .message-item-content {
+            background-color: $text-color-1;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+            word-wrap: break-word;
+          }
+          .message-item-header-time {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #999;
+          }
+        }
+      }
+
+      .right {
+        align-self: flex-end;
+        .message-item-inner {
+          align-items: flex-end;
+        }
+      }
+
+      .left {
+        align-self: flex-start;
+        .user-icon {
+          margin-right: 10px;
+        }
+        .message-item-inner {
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+  .chat-input {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    margin-bottom: 6.8vh;
+    margin-left: 8.33vw;
+
+    input[type="text"] {
+      flex: 1;
+      padding-left: 10px;
+      width: 82vw;
+      height: 2.5rem;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      font-size: 1rem;
+    }
+    img {
+      margin-left: 10px;
+      width: 3.2vw;
+      height: 3.2vw;
+      cursor: pointer;
+    }
+  }
+}

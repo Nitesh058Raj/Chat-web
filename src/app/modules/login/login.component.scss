@@ -1,4 +1,4 @@
-@import "../../../../styles/_colors.scss";
+@import "../../../styles/_colors.scss";
 
 .login-outer-container {
   display: flex;
@@ -95,10 +95,10 @@
         cursor: pointer;
         width: 25vw;
         height: 10vh;
-      }
-      .login-button:hover {
-        color: $text-color-1;
-        background-color: #5d6e92;
+        &:hover {
+          color: $text-color-1;
+          background-color: #5d6e92;
+        }
       }
     }
   }
