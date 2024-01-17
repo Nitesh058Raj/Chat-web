@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./chat-web.component.scss']
 })
 export class ChatWebComponent {
-
+  constructor() { }
+  
 }
