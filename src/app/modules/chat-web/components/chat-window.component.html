@@ -1,49 +1,37 @@
 <div class="chat-window-container">
   <div class="chat-messages">
-    <div class="messages-list">
-      <div class="message-item left">
+    <div class="messages-list" *ngFor="let data of messages">
+      <div
+        class="message-item"
+        [ngClass]="{ right: !data.isRight, left: data.isRight }"
+      >
         <img
-          src="assets/icons/send-button.svg"
+          *ngIf="data.isRight"
+          src="assets/icons/user-icon.svg"
           alt="Send Button"
           class="user-icon"
         />
         <div class="message-item-inner">
           <div class="message-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates voluptatem
-            exercitationem quos voluptate quas quibusdam, quia, quod voluptates
-            voluptatem exercitationem quos voluptate quas
+            {{ data.message }}
           </div>
-          <div class="message-item-header-time">10:00 AM</div>
-        </div>
-      </div>
-      <div class="message-item" [ngClass]="{ right: !isRight, left: isRight }">
-        <img
-          *ngIf="isRight"
-          src="assets/icons/send-button.svg"
-          alt="Send Button"
-          class="user-icon"
-        />
-        <div class="message-item-inner">
-          <div class="message-item-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quibusdam, quia, quod voluptates voluptatem
-            exercitationem quos voluptate quas quibusdam, quia, quod voluptates
-            voluptatem exercitationem quos voluptate quas
-          </div>
-          <div class="message-item-header-time">10:00 AM</div>
+          <div class="message-item-header-time">{{ data.timeStamp }}</div>
         </div>
         <img
-          *ngIf="!isRight"
-          src="assets/icons/send-button.svg"
-          alt="Send Button"
+          *ngIf="!data.isRight"
+          src="assets/icons/user-icon.svg"
+          alt="{{ data.userName }}"
           class="user-icon"
         />
       </div>
     </div>
   </div>
   <div class="chat-input">
-    <input type="text" placeholder="Type your message..." />
-    <img src="assets/icons/send-button.svg" alt="Send Button" />
+    <input type="text" placeholder="Type your message..." #chatTab />
+    <img
+      src="assets/icons/send-button.svg"
+      (click)="sendMessage(chatTab.value)"
+      alt="Send Button"
+    />
   </div>
 </div>
