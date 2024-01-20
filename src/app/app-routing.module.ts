@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'chat-window',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -16,6 +18,11 @@ const routes: Routes = [
     path: 'chat-window',
     loadChildren: () =>
       import('./modules/chat-web/chat-web.module').then((m) => m.ChatWebModule),
+    canActivate: [authGuard],
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
