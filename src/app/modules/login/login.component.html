@@ -1,38 +1,32 @@
 <div class="login-outer-container">
   <div class="login-inner-container">
-    <div class="quote-container">
-      <p class="quote">
-        “The beautiful thing about learning is that no one can take it away from
-        you.”
-      </p>
-      <p class="author">― B.B. King</p>
-    </div>
-    <div class="divider"></div>
-    <form #form="ngForm" [formGroup]="loginForm" class="login-form">
+    <form
+      #form="ngForm"
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+      class="login-form"
+    >
       <div class="login-header">Chat-Web</div>
+
+      <div class="quote-container">
+        <p class="quote">
+          “We are all now connected by the Internet, like neurons in a giant
+          brain ”
+        </p>
+        <p class="author">― Stephen Hawking</p>
+      </div>
+
       <input
         type="text"
-        placeholder="User Name"
+        id="userName"
+        placeholder="Enter your username..."
         formControlName="userName"
         name="userName"
         class="user-name"
         required
       />
-      <input
-        type="password"
-        placeholder="Password"
-        name="password"
-        formControlName="password"
-        class="password"
-        required
-      />
-      <button
-        type="submit"
-        [disabled]="!loginForm.valid"
-        (click)="login()"
-        class="login-button"
-      >
-        <span>LogIn</span>
+      <button type="submit" [disabled]="!loginForm.valid" class="login-button">
+        <span>Log In</span>
       </button>
     </form>
   </div>
