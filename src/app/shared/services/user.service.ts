@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
+import { User } from '../interfaces/shared.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private userDetails: any;
+  private userDetails!: User;
 
-  constructor() {
-    this.userDetails = {
-      name: 'User-1',
-      email: 'user@mail.com',
-    };
-  }
+  constructor() {}
 
   // Method to set user details from the login component
-  setUserDetails(user: any) {
-    this.userDetails = user;
+  setUserDetails(userDetails: User) {
+    this.userDetails = userDetails;
   }
 
   // Method to get user details in the chat-window component
   getUserDetails() {
     return this.userDetails;
+  }
+
+  isAuthenticated() {
+    return this.userDetails !== undefined;
   }
 }
