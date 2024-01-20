@@ -1,0 +1,49 @@
+// not-found.component.scss
+
+@import "../../../../styles/_colors.scss";
+
+.not-found-container {
+  display: flex;
+  height: 100vh;
+  background-color: $back-groud-color-strong;
+  font-family: "Inter", sans-serif;
+  padding: 40px;
+
+  .not-found-content {
+    .not-found-title {
+      font-size: 48px;
+      font-weight: bold;
+      color: $text-color-0;
+      padding: 10px 0;
+    }
+
+    .not-found-description {
+      margin-top: 16px;
+      font-size: 24px;
+      color: $back-groud-color-lighter;
+    }
+
+    .go-back-button {
+      margin-top: 24px;
+      font-size: 18px;
+      padding: 10px 20px;
+      background-color: $text-color-3;
+      color: $back-groud-color-strong;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background-color: darken($text-color-3, 10%);
+      }
+
+      .return-icon {
+        margin-left: 8px;
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}
