@@ -1,0 +1,42 @@
+<div class="chat-window-container">
+  <div class="chat-messages" #messagesContainer>
+    <div class="messages-list" *ngFor="let data of messages">
+      <div
+        class="message-item"
+        [ngClass]="{ right: data.isRight, left: !data.isRight }"
+      >
+        <app-user-avatar
+          *ngIf="!data.isRight"
+          [username]="data.userName"
+          class="user-icon"
+        ></app-user-avatar>
+        <div class="message-item-inner">
+          <div class="message-item-content">
+            {{ data.message }}
+          </div>
+          <div class="message-item-header-time">
+            {{ data.timeStamp }}
+          </div>
+        </div>
+        <app-user-avatar
+          *ngIf="data.isRight"
+          [username]="data.userName"
+          class="user-icon"
+        ></app-user-avatar>
+      </div>
+    </div>
+  </div>
+  <div class="chat-input">
+    <input
+      type="text"
+      placeholder="Type your message..."
+      (keydown.enter)="sendMessage(chatTab.value)"
+      #chatTab
+    />
+    <img
+      src="assets/icons/send-button.svg"
+      (click)="sendMessage(chatTab.value)"
+      alt="Send Button"
+    />
+  </div>
+</div>
