@@ -1,17 +1,55 @@
 import { TestBed } from '@angular/core/testing';
-import { CanActivateFn } from '@angular/router';
+import { Router } from '@angular/router';
+import { UserService } from '../shared/services/user.service';
+import { AuthGuard } from './auth.guard';
 
-import { authGuard } from './auth.guard';
-
-describe('authGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => authGuard(...guardParameters));
+describe('AuthGuard', () => {
+  let authGuard: AuthGuard;
+  let userService: jasmine.SpyObj<UserService>;
+  let router: jasmine.SpyObj<Router>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    const userServiceSpy = jasmine.createSpyObj('UserService', [
+      'isAuthenticated',
+    ]);
+    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+
+    TestBed.configureTestingModule({
+      providers: [
+        AuthGuard,
+        { provide: UserService, useValue: userServiceSpy },
+        { provide: Router, useValue: routerSpy },
+      ],
+    });
+
+    authGuard = TestBed.inject(AuthGuard);
+    userService = TestBed.inject(UserService) as jasmine.SpyObj<UserService>;
+    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
   });
 
   it('should be created', () => {
-    expect(executeGuard).toBeTruthy();
+    expect(authGuard).toBeTruthy();
+  });
+
+  describe('canActivate', () => {
+    it('should return true and allow navigation when user is authenticated', () => {
+      userService.isAuthenticated.and.returnValue(true);
+
+      const canActivate = authGuard.canActivate();
+
+      expect(canActivate).toBeTrue();
+      expect(userService.isAuthenticated).toHaveBeenCalled();
+      expect(router.navigate).not.toHaveBeenCalled();
+    });
+
+    it('should return false and navigate to login page when user is not authenticated', () => {
+      userService.isAuthenticated.and.returnValue(false);
+
+      const canActivate = authGuard.canActivate();
+
+      expect(canActivate).toBeFalse();
+      expect(userService.isAuthenticated).toHaveBeenCalled();
+      expect(router.navigate).toHaveBeenCalledWith(['/login']);
+    });
   });
 });

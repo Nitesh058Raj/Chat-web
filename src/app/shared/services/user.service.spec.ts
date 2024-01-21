@@ -1,24 +1,40 @@
 import { TestBed } from '@angular/core/testing';
+import { User } from '../interfaces/shared.model';
 import { UserService } from './user.service';
 
 describe('UserService', () => {
-  let service: UserService;
+  let userService: UserService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(UserService);
+    TestBed.configureTestingModule({
+      providers: [UserService],
+    });
+    userService = TestBed.inject(UserService);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(userService).toBeTruthy();
   });
 
-  it('should set user details', () => {
-    const user = {
-      name: 'Test User',
-      email: 'testuser@mail.com',
+  it('should set and get user details', () => {
+    const userDetails: User = {
+      name: 'testUser',
     };
-    service.setUserDetails(user);
-    expect(service.getUserDetails()).toEqual(user);
+
+    userService.setUserDetails(userDetails);
+    const retrievedUserDetails = userService.getUserDetails();
+
+    expect(retrievedUserDetails).toEqual(userDetails);
+  });
+
+  it('should check authentication status', () => {
+    expect(userService.isAuthenticated()).toBeFalse(); // Initially not authenticated
+
+    const userDetails: User = {
+      name: 'testUser',
+    };
+
+    userService.setUserDetails(userDetails);
+    expect(userService.isAuthenticated()).toBeTrue(); // Authenticated after setting user details
   });
 });
