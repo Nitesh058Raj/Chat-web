@@ -1,0 +1,33 @@
+<div class="login-outer-container">
+  <div class="login-inner-container">
+    <form
+      #form="ngForm"
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+      class="login-form"
+    >
+      <div class="login-header">Chat-Web</div>
+
+      <div class="quote-container">
+        <p class="quote">
+          “We are all now connected by the Internet, like neurons in a giant
+          brain ”
+        </p>
+        <p class="author">― Stephen Hawking</p>
+      </div>
+
+      <input
+        type="text"
+        id="userName"
+        placeholder="Enter your username..."
+        formControlName="userName"
+        name="userName"
+        class="user-name"
+        required
+      />
+      <button type="submit" [disabled]="!loginForm.valid" class="login-button">
+        <span>Log In</span>
+      </button>
+    </form>
+  </div>
+</div>
