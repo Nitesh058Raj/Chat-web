@@ -39,6 +39,8 @@ export class WebSocketServiceService {
     // Connect to the WebSocket
     if (this.socket.readyState === WebSocket.CLOSED) {
       this.socket = new WebSocket(this.url);
+    } else {
+      console.log('Socket is already open');
     }
   }
 
@@ -46,6 +48,8 @@ export class WebSocketServiceService {
     // Disconnect from the WebSocket
     if (this.socket.readyState === WebSocket.OPEN) {
       this.socket.close();
+    } else {
+      console.log('Socket is already closed');
     }
   }
 
@@ -57,6 +61,7 @@ export class WebSocketServiceService {
     // Send message to the WebSocket
     if (this.socket.readyState === WebSocket.OPEN) {
       this.socket.send(JSON.stringify(message));
+      console.log('Message sent');
     } else {
       console.log('Socket is closed');
     }

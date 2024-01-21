@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/interfaces/shared.model';
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/shared/services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   @ViewChild('form') form: any;
 
   userName!: FormControl;
@@ -42,9 +42,5 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.userService.setUserDetails(this.userDetails);
     this.router.navigate(['/chat-window']);
-  }
-
-  ngOnDestroy() {
-    this.form.reset();
   }
 }
